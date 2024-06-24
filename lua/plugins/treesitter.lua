@@ -1,0 +1,52 @@
+local highlights = {
+  'asm',
+  'bash',
+  'c',
+  'clojure',
+  'cpp',
+  'css',
+  'dockerfile',
+  'git_config',
+  'git_rebase',
+  'gitattributes',
+  'gitcommit',
+  'gitignore',
+  'haskell',
+  'html',
+  'http',
+  'ini',
+  'java',
+  'javascript',
+  'json',
+  'kotlin',
+  'lua',
+  'make',
+  'markdown',
+  'markdown_inline',
+  'nasm',
+  'objdump',
+  'properties',
+  'proto',
+  'python',
+  'rust',
+  'sql',
+  'ssh_config',
+  'toml',
+  'tsx',
+  'typescript',
+  'vim',
+  'vimdoc',
+  'xml',
+  'yaml',
+  'zig'
+}
+
+require 'nvim-treesitter.configs'.setup {
+  ensure_installed = highlights,
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false
+  }
+}

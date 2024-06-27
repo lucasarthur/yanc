@@ -13,7 +13,7 @@ cmp.setup {
     ['<C-e>'] = cmp.mapping.abort(),
     ['<Up>'] = cmp.mapping.select_prev_item { behavior = 'select' },
     ['<Down>'] = cmp.mapping.select_next_item { behavior = 'select' },
-    ['<CR>'] = cmp.mapping.confirm { select = true }
+    ['<CR>'] = cmp.mapping.confirm { select = false }
   },
   sources = cmp.config.sources(
     {{ name = 'nvim_lsp' }, { name = 'vsnip' }},

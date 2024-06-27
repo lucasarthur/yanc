@@ -16,8 +16,8 @@ require 'lualine'.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename', 'filesize', 'lsp_progress' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_c = { 'filename', 'filesize', 'lsp_progress', 'searchcount' },
+    lualine_x = { 'selectioncount', 'encoding', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },

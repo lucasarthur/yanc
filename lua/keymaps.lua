@@ -23,7 +23,13 @@ vim.keymap.set('n', '<C-A-l>', ':tabn<CR>', opts)
 vim.keymap.set('n', '<C-A-w>', ':tabc<CR>', opts)
 
 -- write as su
+local function write_and_quit()
+  vim.cmd 'SudaWrite'
+  vim.cmd 'q'
+end
+
 vim.keymap.set('c', 'w!!', 'SudaWrite', opts)
+vim.keymap.set('c', 'wq!!', write_and_quit, opts)
 
 -- telescope
 vim.keymap.set('n', '<leader>ff', require 'telescope.builtin'.find_files, opts)

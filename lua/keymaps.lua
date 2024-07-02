@@ -1,38 +1,29 @@
-require 'plugins'
-require 'plugins.telescope'
-require 'plugins.lspsaga'
+local set = vim.keymap.set
+vim.g.mapleader = ' '
 
-local vim = vim
-local opts = { noremap = true, silent = true }
+set('n', '<leader>fe', vim.cmd.Ex)
 
--- NERDTree
-local function nerd_tree_find()
-  local path = vim.fn.input('Enter path: ')
+set('n', '<C-A-h>', '<cmd>tabp<CR>')
+set('n', '<C-A-l>', '<cmd>tabn<CR>')
+set('n', '<C-A-w>', '<cmd>tabc<CR>')
 
-  if path == '' then
-    vim.cmd('NERDTreeFind')
-  else
-    vim.cmd('NERDTreeFind ' .. path)
-  end
-end
+set('v', 'J', '<cmd>m \'>+1<CR>gv=gv')
+set('v', 'K', '<cmd>m \'<-2<CR>gv=gv')
 
-vim.keymap.set('n', '<C-b>', ':NERDTreeToggle<CR>', opts)
-vim.keymap.set('n', '<C-f>', nerd_tree_find, opts)
-vim.keymap.set('n', '<C-A-h>', ':tabp<CR>', opts)
-vim.keymap.set('n', '<C-A-l>', ':tabn<CR>', opts)
-vim.keymap.set('n', '<C-A-w>', ':tabc<CR>', opts)
+set('n', 'J', 'mzJ`z')
+set('n', '<C-d>', '<C-d>zz')
+set('n', '<C-u>', '<C-u>zz')
+set('n', 'n', 'nzzzv')
+set('n', 'N', 'Nzzzv')
 
--- write as su
-local function write_and_quit()
-  vim.cmd 'SudaWrite'
-  vim.cmd 'q'
-end
+set('x', '<leader>p', [["_dP]])
+set({ 'n', 'v' }, '<leader>y', [["+y]])
+set('n', '<leader>Y', [["+Y]])
 
-vim.keymap.set('c', 'w!!', 'SudaWrite', opts)
-vim.keymap.set('c', 'wq!!', write_and_quit, opts)
+set({ 'n', 'v' }, '<leader>d', [["_d]])
+set('i', '<C-c>', '<Esc>')
+set('n', 'Q', '<nop>')
+set('n', '<leader>f', vim.lsp.buf.format)
 
--- telescope
-vim.keymap.set('n', '<leader>ff', require 'telescope.builtin'.find_files, opts)
-
--- lspsaga
-vim.keymap.set({ 'n', 't' }, '<A-d>', '<cmd>Lspsaga term_toggle<CR>', opts)
+set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })

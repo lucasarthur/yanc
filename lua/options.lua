@@ -1,5 +1,5 @@
-local vim = vim
 local options = {
+  guicursor = '',
   compatible = false,
   showmatch = true,
   ignorecase = true,
@@ -10,6 +10,7 @@ local options = {
   autoindent = true,
   smartindent = true,
   number = true,
+  relativenumber = true,
   wildmode = { 'longest', 'list' },
   mouse = 'a',
   clipboard = 'unnamedplus',
@@ -19,24 +20,26 @@ local options = {
   fileencoding = 'utf-8',
   history = 5000,
   hlsearch = true,
-  incsearch = true
+  incsearch = true,
+  scrolloff = 8,
+  signcolumn = 'yes',
+  swapfile = false,
+  backup = false,
+  undodir = os.getenv('HOME') .. '/.vim/undodir',
+  undofile = true,
+  updatetime = 50
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd 'filetype plugin on'
+vim.opt.isfname:append('@-@')
 
 -- TERMGUIColors - 24 bits
 if vim.fn.has 'termguicolors' == 1 then
   vim.opt.termguicolors = true
 end
-
-require 'plugins'
-
--- Set color scheme
-vim.cmd 'silent! colorscheme dracula'
 
 -- When we open a file, it should be nice to be at the file's directory, right?
 vim.api.nvim_create_autocmd('BufEnter', {

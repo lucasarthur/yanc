@@ -10,6 +10,7 @@ local options = {
   autoindent = true,
   smartindent = true,
   number = true,
+  relativenumber = true,
   wildmode = { 'longest', 'list' },
   mouse = 'a',
   clipboard = 'unnamedplus',
